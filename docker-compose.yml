@@ -2,23 +2,23 @@ version: "3"
 
 services:
   mysql:
-    image: mysql:5.7
+    build: mysql
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mysqldata:/var/lib/mysql
     restart: always
     command: --innodb-use-native-aio=0
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: homestead
-    ports:
-      - "33061:3306"
     networks:
       - network-desafio2
+    environment:
+      - MYSQL_DATABASE=nodejs
+      - MYSQL_ROOT_PASSWORD=secret
 
   nodejs:
     build: nodejs
     networks:
       - network-desafio2
+    volumes:
+      - ./nodejs:/app
 
   nginx:
     build: nginx

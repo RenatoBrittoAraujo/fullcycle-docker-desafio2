@@ -1,3 +1,3 @@
-mysql/
-!mysql/.gitkeep
+mysqldata/
+
 nodejs/node_modules/
