@@ -9,11 +9,9 @@ RUN wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
-COPY ./package.json /app/package.json
-COPY ./package-lock.json /app/package-lock.json
+COPY . .
 
 RUN yarn install
-COPY . .
 
 EXPOSE 8080
 
